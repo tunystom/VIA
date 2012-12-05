@@ -1,0 +1,31 @@
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+version="2.4">
+
+<description>Client-server app test</description>
+<resource-ref>
+<description>DB Connection</description>
+<res-ref-name>jdbc/VIA</res-ref-name>
+<res-type>javax.sql.DataSource</res-type>
+<res-auth>Container</res-auth>
+</resource-ref>
+ 
+ <servlet>
+	<servlet-name>jersey-serlvet</servlet-name>
+	<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+	<init-param>
+		<param-name>com.sun.jersey.config.property.packages</param-name>
+		<param-value>cz.via</param-value>
+	</init-param>
+	<init-param>
+		<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+		<param-value>true</param-value>
+	</init-param>
+	<load-on-startup>1</load-on-startup>
+  </servlet>
+ 
+  <servlet-mapping>
+	<servlet-name>jersey-serlvet</servlet-name>
+	<url-pattern>/*</url-pattern>
+  </servlet-mapping>
+</web-app>
